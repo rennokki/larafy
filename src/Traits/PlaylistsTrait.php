@@ -6,19 +6,12 @@ use Carbon\Carbon;
 
 trait PlaylistsTrait
 {
-    public function searchPlaylists(string $query, int $limit = 10, int $offset = 0)
-    {
-        $json = $this->get()->request('/search', [
-            'q' => $query,
-            'type' => 'playlist',
-            'market' => $this->market,
-            'limit' => $limit,
-            'offset' => $offset,
-        ]);
-
-        return $json->playlists;
-    }
-
+    /**
+     * Get a playlist based on ID.
+     *
+     * @param string $playlistId
+     * @return string The JSON response.
+     */
     public function getPlaylist(string $playlistId)
     {
         $json = $this->get()->request('/playlists/'.$playlistId, [
@@ -28,6 +21,14 @@ trait PlaylistsTrait
         return $json;
     }
 
+    /**
+     * Get tracks from a playlist.
+     *
+     * @param string $playlistId
+     * @param int $limit
+     * @param int $offset
+     * @return string The JSON response.
+     */
     public function getPlaylistTracks(string $playlistId, int $limit = 10, int $offset = 0)
     {
         $json = $this->get()->request('/playlists/'.$playlistId.'/tracks', [
@@ -39,6 +40,14 @@ trait PlaylistsTrait
         return $json;
     }
 
+    /**
+     * Get featured playlists from a specific time.
+     *
+     * @param null|string|\Carbon\Carbon $timestamp
+     * @param int $limit
+     * @param int $offset
+     * @return string The JSON response.
+     */
     public function getFeaturedPlaylists($timestamp = null, int $limit = 10, int $offset = 0)
     {
         $timestamp = ($timestamp) ?: Carbon::now();
@@ -47,6 +56,27 @@ trait PlaylistsTrait
             'country' => $this->market,
             'locale' => $this->locale,
             'timestamp' => Carbon::parse($timestamp)->toIso8601String(),
+            'limit' => $limit,
+            'offset' => $offset,
+        ]);
+
+        return $json->playlists;
+    }
+
+    /**
+     * Search playlists based on a query.
+     *
+     * @param string $query
+     * @param int $limit
+     * @param int $offset
+     * @return string The JSON response.
+     */
+    public function searchPlaylists(string $query, int $limit = 10, int $offset = 0)
+    {
+        $json = $this->get()->request('/search', [
+            'q' => $query,
+            'type' => 'playlist',
+            'market' => $this->market,
             'limit' => $limit,
             'offset' => $offset,
         ]);
