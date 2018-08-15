@@ -106,7 +106,7 @@ trait RequestTrait
             $this->generateClientCredentialsToken();
         }
 
-        $client = new \GuzzleHttp\client();
+        $client = new \GuzzleHttp\Client();
     
         try {
             $request = $client->request($this->requestMethod, Self::SPOTIFY_API_URL.$endpoint.'?'.http_build_query($data), [
@@ -130,7 +130,7 @@ trait RequestTrait
      */
     protected function generateClientCredentialsToken()
     {
-        $client = new \GuzzleHttp\client();
+        $client = new \GuzzleHttp\Client();
 
         $request = $client->request('POST', Self::$apiTokenUrl, [
             'headers' => [
