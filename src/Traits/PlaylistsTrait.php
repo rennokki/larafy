@@ -21,6 +21,14 @@ trait PlaylistsTrait
         return $json;
     }
 
+    /**
+     * Get tracks from a playlist.
+     *
+     * @param string $playlistId
+     * @param int $limit
+     * @param int $offset
+     * @return string The JSON response.
+     */
     public function getPlaylistTracks(string $playlistId, int $limit = 10, int $offset = 0)
     {
         $json = $this->get()->request('/playlists/'.$playlistId.'/tracks', [
@@ -32,6 +40,14 @@ trait PlaylistsTrait
         return $json;
     }
 
+    /**
+     * Get featured playlists from a specific time.
+     *
+     * @param null|string|\Carbon\Carbon $timestamp
+     * @param int $limit
+     * @param int $offset
+     * @return string The JSON response.
+     */
     public function getFeaturedPlaylists($timestamp = null, int $limit = 10, int $offset = 0)
     {
         $timestamp = ($timestamp) ?: Carbon::now();
