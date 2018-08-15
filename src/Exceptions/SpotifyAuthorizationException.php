@@ -2,6 +2,7 @@
 
 namespace Rennokki\Larafy\Exceptions;
 
-class SpotifyAuthorizationException extends LarafyException {
+class SpotifyAuthorizationException extends LarafyException
+{
     //
 }

@@ -6,7 +6,7 @@ trait ArtistsTrait
 {
     public function getArtists($artistsIds)
     {
-        if(is_array($artistsIds)) {
+        if (is_array($artistsIds)) {
             $artistsIds = collect($artistsIds)->implode(',');
         }
 
@@ -26,7 +26,7 @@ trait ArtistsTrait
 
     public function getArtistAlbums(string $artistId, int $limit = 10, int $offset = 0, $includeGroups = ['single', 'appears_on'])
     {
-        if(is_array($includeGroups)) {
+        if (is_array($includeGroups)) {
             $includeGroups = collect($includeGroups)->implode(',');
         }
 

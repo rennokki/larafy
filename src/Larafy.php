@@ -2,7 +2,6 @@
 
 namespace Rennokki\Larafy;
 
-use GuzzleHttp\Client as GuzzleClient;
 use Rennokki\Larafy\Traits\AlbumsTrait;
 use Rennokki\Larafy\Traits\BrowseTrait;
 use Rennokki\Larafy\Traits\TracksTrait;
@@ -22,7 +21,7 @@ class Larafy
 
     const SPOTIFY_API_URL = 'https://api.spotify.com/v1';
 
-    public function __construct($clientId = null, $clientSecret)
+    public function __construct($clientId, $clientSecret)
     {
         $this->clientId = $clientId;
         $this->clientSecret = $clientSecret;
