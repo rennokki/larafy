@@ -11,12 +11,12 @@ trait RequestTrait
     protected $bearerToken;
     protected $clientCredentialsToken;
     protected $clientCredentialsExpirationDate;
-    
+
     protected static $apiTokenUrl = 'https://accounts.spotify.com/api/token';
 
     /**
      * Set the request method to GET.
-     * 
+     *
      * @return \Rennokki\Larafy\Larafy
      */
     public function get()
@@ -28,7 +28,7 @@ trait RequestTrait
 
     /**
      * Set the request method to POST.
-     * 
+     *
      * @return \Rennokki\Larafy\Larafy
      */
     public function post()
@@ -40,7 +40,7 @@ trait RequestTrait
 
     /**
      * Set the request method to PUT.
-     * 
+     *
      * @return \Rennokki\Larafy\Larafy
      */
     public function put()
@@ -52,7 +52,7 @@ trait RequestTrait
 
     /**
      * Set the request method to DELETE.
-     * 
+     *
      * @return \Rennokki\Larafy\Larafy
      */
     public function delete()
@@ -67,7 +67,7 @@ trait RequestTrait
      * to authenticate the requests. It either is Bearer Token
      * given from Login Flow or just a client credentials token
      * which is generated whenever is needed.
-     * 
+     *
      * @return string
      */
     public function getAuthorizationToken()
@@ -82,7 +82,7 @@ trait RequestTrait
     /**
      * Sets a Bearer Token. If a Bearer Token exists,
      * it will be used with priority over a client credentials token.
-     * 
+     *
      * @return \Rennokki\Larafy\Larafy
      */
     public function withBearerToken(string $bearerToken)
@@ -106,8 +106,8 @@ trait RequestTrait
             $this->generateClientCredentialsToken();
         }
 
-        $client = new \GuzzleHttp\client();
-    
+        $client = new \GuzzleHttp\Client();
+
         try {
             $request = $client->request($this->requestMethod, Self::SPOTIFY_API_URL.$endpoint.'?'.http_build_query($data), [
                 'headers' => [
@@ -116,7 +116,7 @@ trait RequestTrait
                     'Authorization' => 'Bearer '.$this->getAuthorizationToken(),
                 ],
             ]);
-        } catch(\GuzzleHttp\Exception\ClientException $e) {
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
             throw new SpotifyAPIException('Spotify returned other than 200 OK.', json_decode($e->getResponse()->getBody()->getContents()));
         }
 
@@ -125,23 +125,27 @@ trait RequestTrait
 
     /**
      * Generate a Client Credentials Token.
-     * 
+     *
      * @return \Rennokki\Larafy\Larafy
      */
     protected function generateClientCredentialsToken()
     {
-        $client = new \GuzzleHttp\client();
+        $client = new \GuzzleHttp\Client();
 
-        $request = $client->request('POST', Self::$apiTokenUrl, [
-            'headers' => [
-                'Content-Type' => 'application/x-www-form-urlencoded',
-                'Accepts' => 'application/json',
-                'Authorization' => 'Basic '.base64_encode($this->clientId.':'.$this->clientSecret),
-            ],
-            'form_params' => [
-                'grant_type' => 'client_credentials',
-            ],
-        ]);
+        try {
+            $request = $client->request('POST', Self::$apiTokenUrl, [
+                'headers' => [
+                    'Content-Type' => 'application/x-www-form-urlencoded',
+                    'Accepts' => 'application/json',
+                    'Authorization' => 'Basic '.base64_encode($this->clientId.':'.$this->clientSecret),
+                ],
+                'form_params' => [
+                    'grant_type' => 'client_credentials',
+                ],
+            ]);
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            throw new SpotifyAPIException('Spotify API cannot generate the Client Credentials Token.', json_decode($e->getResponse()->getBody()->getContents()));
+        }
 
         $response = json_decode($request->getBody());
 
@@ -158,7 +162,7 @@ trait RequestTrait
      */
     private function usesOnlyUserToken()
     {
-        if(!$this->bearerToken) {
+        if (! $this->bearerToken) {
             throw new SpotifyAuthorizationException('This endpoint needs User Authorization. Read more on https://developer.spotify.com/documentation/general/guides/authorization-guide.');
         }
     }

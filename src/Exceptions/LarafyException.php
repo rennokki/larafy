@@ -2,8 +2,8 @@
 
 namespace Rennokki\Larafy\Exceptions;
 
-class LarafyException extends \Exception {
-
+class LarafyException extends \Exception
+{
     protected $apiResponse;
 
     public function __construct($message = null, $apiResponse = null, $code = 0, \EXception $previous = null)

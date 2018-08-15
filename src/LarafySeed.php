@@ -61,7 +61,7 @@ class LarafySeed
 
     public function addArtist(string $artistId)
     {
-        if(!$this->artists->contains($artistId)) {
+        if (! $this->artists->contains($artistId)) {
             $this->artists->push($artistId);
         }
 
@@ -70,16 +70,16 @@ class LarafySeed
 
     public function addArtists($artistsIds)
     {
-        if(is_array($artistsIds)) {
+        if (is_array($artistsIds)) {
             $artistsIds = collect($artistsIds);
         }
 
-        if(is_string($artistsIds)) {
+        if (is_string($artistsIds)) {
             $artistsIds = collect(explode(',', $artistsIds));
         }
 
-        $artistsIds->each(function($item, $key) {
-            if(!$this->artists->contains($item)) {
+        $artistsIds->each(function ($item, $key) {
+            if (! $this->artists->contains($item)) {
                 $this->artists->push($item);
             }
         });
@@ -89,11 +89,11 @@ class LarafySeed
 
     public function setArtists($artistsIds)
     {
-        if(is_array($artistsIds)) {
+        if (is_array($artistsIds)) {
             $this->artists = collect($artistsIds);
         }
 
-        if(is_string($artistsIds)) {
+        if (is_string($artistsIds)) {
             $this->artists = collect(explode(',', $artistsIds));
         }
 
@@ -102,7 +102,7 @@ class LarafySeed
 
     public function addTrack(string $trackId)
     {
-        if(!$this->tracks->contains($trackId)) {
+        if (! $this->tracks->contains($trackId)) {
             $this->tracks->push($trackId)->toArray();
         }
 
@@ -111,16 +111,16 @@ class LarafySeed
 
     public function addTracks($tracksIds)
     {
-        if(is_array($tracksIds)) {
+        if (is_array($tracksIds)) {
             $tracksIds = collect($tracksIds);
         }
 
-        if(is_string($tracksIds)) {
+        if (is_string($tracksIds)) {
             $tracksIds = collect(explode(',', $tracksIds));
         }
-    
-        $tracksIds->map(function($item, $key) {
-            if(!$this->tracks->contains($item)) {
+
+        $tracksIds->map(function ($item, $key) {
+            if (! $this->tracks->contains($item)) {
                 $this->tracks->push($item);
             }
         });
@@ -130,11 +130,11 @@ class LarafySeed
 
     public function setTracks($tracksIds)
     {
-        if(is_array($tracksIds)) {
+        if (is_array($tracksIds)) {
             $this->tracks = collect($tracksIds);
         }
 
-        if(is_string($tracksIds)) {
+        if (is_string($tracksIds)) {
             $this->tracks = collect(explode(',', $tracksIds));
         }
 
@@ -143,7 +143,7 @@ class LarafySeed
 
     public function addGenre(string $genreId)
     {
-        if(!$this->genres->contains($genreId)) {
+        if (! $this->genres->contains($genreId)) {
             $this->genres->push($genreId);
         }
 
@@ -152,16 +152,16 @@ class LarafySeed
 
     public function addGenres($genresIds)
     {
-        if(is_array($genresIds)) {
+        if (is_array($genresIds)) {
             $genresIds = collect($genresIds);
         }
 
-        if(is_string($genresIds)) {
+        if (is_string($genresIds)) {
             $genresIds = collect(explode(',', $genresIds));
         }
-    
-        $genresIds->map(function($item, $key) {
-            if(!$this->genres->contains($item)) {
+
+        $genresIds->map(function ($item, $key) {
+            if (! $this->genres->contains($item)) {
                 $this->genres->push($item);
             }
         });
@@ -171,11 +171,11 @@ class LarafySeed
 
     public function setGenres($genresIds)
     {
-        if(is_array($genresIds)) {
+        if (is_array($genresIds)) {
             $this->genres = collect($genresIds);
         }
 
-        if(is_string($genresIds)) {
+        if (is_string($genresIds)) {
             $this->genres = collect(explode(',', $genresIds));
         }
 
@@ -366,14 +366,14 @@ class LarafySeed
 
     public function setDuration(int $min, int $max)
     {
-        $this->durationRange = [(int) ($min*1000), (int) ($max*1000)];
+        $this->durationRange = [(int) ($min * 1000), (int) ($max * 1000)];
 
         return $this;
     }
 
     public function setTargetDuration(int $target)
     {
-        $this->targetDuration = (int) ($target*1000);
+        $this->targetDuration = (int) ($target * 1000);
 
         return $this;
     }
@@ -416,27 +416,27 @@ class LarafySeed
 
         $array = collect([]);
 
-        if($this->artists->count() > 0) {
+        if ($this->artists->count() > 0) {
             $array->put('seed_artists', $this->artists->unique()->implode(','));
         }
 
-        if($this->tracks->count() > 0) {
+        if ($this->tracks->count() > 0) {
             $array->put('seed_tracks', $this->tracks->unique()->implode(','));
         }
 
-        if($this->genres->count() > 0) {
+        if ($this->genres->count() > 0) {
             $array->put('seed_genres', $this->genres->unique()->implode(','));
         }
 
-        foreach($ranges as $field => $range) {
-            if(count($range) > 0) {
+        foreach ($ranges as $field => $range) {
+            if (count($range) > 0) {
                 $array->put('min_'.$field, $range[0]);
                 $array->put('max_'.$field, $range[1]);
             }
         }
 
-        foreach($targets as $field => $target) {
-            if(!is_null($target)) {
+        foreach ($targets as $field => $target) {
+            if (! is_null($target)) {
                 $array->put('target_'.$field, $target);
             }
         }

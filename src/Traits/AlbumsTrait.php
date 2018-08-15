@@ -6,7 +6,7 @@ trait AlbumsTrait
 {
     public function getAlbums($albumsIds)
     {
-        if(is_array($albumsIds)) {
+        if (is_array($albumsIds)) {
             $albumsIds = collect($albumsIds)->implode(',');
         }
 

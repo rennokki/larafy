@@ -2,8 +2,6 @@
 
 namespace Rennokki\Larafy\Test;
 
-use Rennokki\Larafy\Larafy;
-
 class AlbumsTest extends TestCase
 {
     public function testGetAlbums()

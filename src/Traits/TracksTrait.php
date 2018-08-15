@@ -6,12 +6,12 @@ trait TracksTrait
 {
     public function getTracks($tracksIds)
     {
-        if(is_array($tracksIds)) {
+        if (is_array($tracksIds)) {
             $tracksIds = collect($tracksIds)->implode(',');
         }
 
         $json = $this->get()->request('/tracks', [
-            'ids' => $tracksIds
+            'ids' => $tracksIds,
         ]);
 
         return $json->tracks;

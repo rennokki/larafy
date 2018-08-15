@@ -2,7 +2,6 @@
 
 namespace Rennokki\Larafy\Test;
 
-use Rennokki\Larafy\Larafy;
 use Rennokki\Larafy\LarafySeed;
 
 class BrowseTest extends TestCase
@@ -26,7 +25,7 @@ class BrowseTest extends TestCase
         $playlists = $this->api->getCategoryPlaylists($firstCategory->id, 15, 5);
         $this->assertEquals(count($playlists->items), 15);
     }
-    
+
     public function testGetNewReleases()
     {
         $releases = $this->api->getNewReleases(15, 5);

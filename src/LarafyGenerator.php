@@ -2,13 +2,11 @@
 
 namespace Rennokki\Larafy;
 
-use GuzzleHttp\Client as GuzzleClient;
-
 class LarafyGenerator
 {
     /**
      * Generate an URI format for album.
-     * 
+     *
      * @param string $albumId
      * @return string
      */
@@ -19,7 +17,7 @@ class LarafyGenerator
 
     /**
      * Generate an URI format for track.
-     * 
+     *
      * @param string $trackId
      * @return string
      */
@@ -30,7 +28,7 @@ class LarafyGenerator
 
     /**
      * Generate an URI format for artist.
-     * 
+     *
      * @param string $artistId
      * @return string
      */
@@ -41,7 +39,7 @@ class LarafyGenerator
 
     /**
      * Generate an URL for an album.
-     * 
+     *
      * @param string $albumId
      * @return string
      */
@@ -52,7 +50,7 @@ class LarafyGenerator
 
     /**
      * Generate an URL for a playlist.
-     * 
+     *
      * @param string $playlistId
      * @return string
      */
@@ -63,7 +61,7 @@ class LarafyGenerator
 
     /**
      * Generate an URL for a track.
-     * 
+     *
      * @param string $trackId
      * @return string
      */
@@ -74,7 +72,7 @@ class LarafyGenerator
 
     /**
      * Generate an URL for an artist.
-     * 
+     *
      * @param string $artistId
      * @return string
      */

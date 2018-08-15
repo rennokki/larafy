@@ -2,8 +2,6 @@
 
 namespace Rennokki\Larafy\Test;
 
-use Rennokki\Larafy\Larafy;
-
 class ArtistsTest extends TestCase
 {
     public function testGetArtists()
@@ -20,5 +18,6 @@ class ArtistsTest extends TestCase
 
         $artistAlbums = $this->api->getArtistAlbums($firstArtist->id, 15, 5);
         $artistTopTracks = $this->api->getArtistTopTracks($firstArtist->id, 15, 5);
+        $artistRelatedArtists = $this->api->getArtistRelatedArtists($firstArtist->id);
     }
 }
