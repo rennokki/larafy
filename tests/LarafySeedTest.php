@@ -8,7 +8,7 @@ class LarafySeedTest extends TestCase
 {
     public function testArtist()
     {
-        $seed = new LarafySeed;        
+        $seed = new LarafySeed;
         $this->assertEquals(count($seed->artists), 0);
         $this->assertEquals(count($seed->getArrayForAPI()), 0);
 
@@ -43,7 +43,7 @@ class LarafySeedTest extends TestCase
 
     public function testTrack()
     {
-        $seed = new LarafySeed;        
+        $seed = new LarafySeed;
         $this->assertEquals(count($seed->tracks), 0);
         $this->assertEquals(count($seed->getArrayForAPI()), 0);
 
@@ -78,7 +78,7 @@ class LarafySeedTest extends TestCase
 
     public function testGenre()
     {
-        $seed = new LarafySeed;        
+        $seed = new LarafySeed;
         $this->assertEquals(count($seed->genres), 0);
         $this->assertEquals(count($seed->getArrayForAPI()), 0);
 
