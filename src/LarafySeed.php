@@ -91,7 +91,7 @@ class LarafySeed
         }
 
         $artistsIds->each(function ($item, $key) {
-            $this->addArist($item);
+            $this->addArtist($item);
         });
 
         return $this;
