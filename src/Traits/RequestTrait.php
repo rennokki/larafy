@@ -132,16 +132,20 @@ trait RequestTrait
     {
         $client = new \GuzzleHttp\Client();
 
-        $request = $client->request('POST', Self::$apiTokenUrl, [
-            'headers' => [
-                'Content-Type' => 'application/x-www-form-urlencoded',
-                'Accepts' => 'application/json',
-                'Authorization' => 'Basic '.base64_encode($this->clientId.':'.$this->clientSecret),
-            ],
-            'form_params' => [
-                'grant_type' => 'client_credentials',
-            ],
-        ]);
+        try  {
+            $request = $client->request('POST', Self::$apiTokenUrl, [
+                'headers' => [
+                    'Content-Type' => 'application/x-www-form-urlencoded',
+                    'Accepts' => 'application/json',
+                    'Authorization' => 'Basic '.base64_encode($this->clientId.':'.$this->clientSecret),
+                ],
+                'form_params' => [
+                    'grant_type' => 'client_credentials',
+                ],
+            ]);
+        } catch(\GuzzleHttp\Exception\ClientException $e) {
+            throw new SpotifyAPIException('Spotify API cannot generate the Client Credentials Token.', json_decode($e->getResponse()->getBody()->getContents()));
+        }
 
         $response = json_decode($request->getBody());
 
