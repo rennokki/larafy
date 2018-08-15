@@ -57,7 +57,7 @@ trait BrowseTrait
         return $json->albums;
     }
 
-    public function getRecommendations(int $limit, LarafySeed $seed)
+    public function getRecommendations(LarafySeed $seed, int $limit = 10)
     {
         $json = $this->get()->request('/recommendations', array_merge([
             'limit' => $limit,
