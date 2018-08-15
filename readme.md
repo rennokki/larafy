@@ -41,6 +41,7 @@ try {
     $api->searchArtists('Lana del Rey');
 } catch(\Rennokki\Larafy\Exceptions\SpotifyAuthorizationException $e) {
     // invalid ID & Secret provided
+    $e->getAPIResponse(); // Get the JSON API response.
 }
 ```
 
