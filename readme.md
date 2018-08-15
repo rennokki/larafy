@@ -31,6 +31,29 @@ $api = new Larafy('your_app_id_here', 'your_app_secret_here');
 ```
 
 # Showcase
+All requests throw exceptions, either if the data is invalid, either if the request is... bad.
+To do so, there are provided two exceptions that can be caught:
+* `\Rennokki\Larafy\Exceptions\SpotifyAPIException` - thrown when the API is authenticated correctly, but the data passed is invalid.
+* `\Rennokki\Larafy\Exceptions\SpotifyAuthorizationException` - thrown when the API can't authenticate using credentials provided.
+
+```php
+try {
+    $api->searchArtists('Lana del Rey');
+} catch(\Rennokki\Larafy\Exceptions\SpotifyAuthorizationException $e) {
+    // invalid ID & Secret provided
+    $e->getAPIResponse(); // Get the JSON API response.
+}
+```
+
+```php
+try {
+    $api->searchArtists('Lana del Rey', -30, -40);
+} catch(\Rennokki\Larafy\Exceptions\SpotifyAPIException $e) {
+    // invalid data sent
+    $e->getAPIResponse(); // Get the JSON API response.
+}
+```
+
 Since Spotify is related to music, it has some certain restrictions over markets and locales. This happens because, for example, some albums that are available in a country may not be available in other countries, such as the `AC/DC`'s `The Razor Edge` album, that has different versions across countries like `Austrialia` or the `US`.
 
 To help give a better search over the market and, respectively, locales, use the `setMarket()` and `setLocale()` methods within the API instance. These are by default set to `US` and `en_US`. These are optional.
