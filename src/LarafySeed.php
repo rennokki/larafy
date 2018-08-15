@@ -79,9 +79,7 @@ class LarafySeed
         }
 
         $artistsIds->each(function ($item, $key) {
-            if (! $this->artists->contains($item)) {
-                $this->artists->push($item);
-            }
+            $this->addArist($item);
         });
 
         return $this;
@@ -120,9 +118,7 @@ class LarafySeed
         }
 
         $tracksIds->map(function ($item, $key) {
-            if (! $this->tracks->contains($item)) {
-                $this->tracks->push($item);
-            }
+            $this->addTrack($item);
         });
 
         return $this;
@@ -161,9 +157,7 @@ class LarafySeed
         }
 
         $genresIds->map(function ($item, $key) {
-            if (! $this->genres->contains($item)) {
-                $this->genres->push($item);
-            }
+            $this->addGenre($item);
         });
 
         return $this;
