@@ -17,8 +17,8 @@ class Larafy
 
     protected $clientId;
     protected $clientSecret;
-    protected $market = 'US';
-    protected $locale = 'en_US';
+    public $market = 'US';
+    public $locale = 'en_US';
 
     const SPOTIFY_API_URL = 'https://api.spotify.com/v1';
 
