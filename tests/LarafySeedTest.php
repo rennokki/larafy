@@ -20,7 +20,7 @@ class LarafySeedTest extends TestCase
         $this->assertEquals(count($seed->getArrayForAPI()), 1);
         $this->assertEquals(count($seed->artists), 1);
 
-        $seed->addArtists('2');
+        $seed->addArtists('1,2');
         $this->assertEquals(count($seed->getArrayForAPI()), 1);
         $this->assertEquals(count($seed->artists), 2);
 
@@ -34,6 +34,10 @@ class LarafySeedTest extends TestCase
 
         $seed->setArtists(['5', '6']);
         $this->assertEquals(count($seed->artists), 2);
+        $this->assertEquals(count($seed->getArrayForAPI()), 1);
+
+        $seed->setArtists('5,6,7');
+        $this->assertEquals(count($seed->artists), 3);
         $this->assertEquals(count($seed->getArrayForAPI()), 1);
     }
 
@@ -51,7 +55,7 @@ class LarafySeedTest extends TestCase
         $this->assertEquals(count($seed->tracks), 1);
         $this->assertEquals(count($seed->getArrayForAPI()), 1);
 
-        $seed->addTracks('2');
+        $seed->addTracks('1,2');
         $this->assertEquals(count($seed->tracks), 2);
         $this->assertEquals(count($seed->getArrayForAPI()), 1);
 
@@ -65,6 +69,10 @@ class LarafySeedTest extends TestCase
 
         $seed->setTracks(['5', '6']);
         $this->assertEquals(count($seed->tracks), 2);
+        $this->assertEquals(count($seed->getArrayForAPI()), 1);
+
+        $seed->setTracks('5,6,7');
+        $this->assertEquals(count($seed->tracks), 3);
         $this->assertEquals(count($seed->getArrayForAPI()), 1);
     }
 
@@ -82,7 +90,7 @@ class LarafySeedTest extends TestCase
         $this->assertEquals(count($seed->genres), 1);
         $this->assertEquals(count($seed->getArrayForAPI()), 1);
 
-        $seed->addGenres('2');
+        $seed->addGenres('1,2');
         $this->assertEquals(count($seed->genres), 2);
         $this->assertEquals(count($seed->getArrayForAPI()), 1);
 
@@ -96,6 +104,10 @@ class LarafySeedTest extends TestCase
 
         $seed->setGenres(['5', '6']);
         $this->assertEquals(count($seed->genres), 2);
+        $this->assertEquals(count($seed->getArrayForAPI()), 1);
+
+        $seed->setGenres('5,6,7');
+        $this->assertEquals(count($seed->genres), 3);
         $this->assertEquals(count($seed->getArrayForAPI()), 1);
     }
 
