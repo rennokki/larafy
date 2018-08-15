@@ -35,7 +35,7 @@ class BrowseTest extends TestCase
     public function testGetRecommendations()
     {
         $seed = (new LarafySeed)->setGenres(['death-metal', 'hard-rock', 'black-metal']);
-        $recommendations = $this->api->getRecommendations(15, $seed);
+        $recommendations = $this->api->getRecommendations($seed, 15);
 
         $this->assertEquals(count($recommendations), 15);
     }
