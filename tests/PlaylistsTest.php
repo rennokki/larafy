@@ -2,8 +2,6 @@
 
 namespace Rennokki\Larafy\Test;
 
-use Rennokki\Larafy\Larafy;
-
 class PlaylistsTest extends TestCase
 {
     public function testGetPlaylists()

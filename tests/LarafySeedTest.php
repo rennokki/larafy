@@ -2,7 +2,6 @@
 
 namespace Rennokki\Larafy\Test;
 
-use Rennokki\Larafy\Larafy;
 use Rennokki\Larafy\LarafySeed;
 
 class LarafySeedTest extends TestCase

@@ -2,8 +2,6 @@
 
 namespace Rennokki\Larafy\Test;
 
-use Rennokki\Larafy\Larafy;
-
 class TracksTest extends TestCase
 {
     public function testGetTracks()
