@@ -97,7 +97,6 @@ trait RequestTrait
      *
      * @param string $endpoint
      * @param array $data
-     * @param array $params
      * @return string The decoded JSON response from the server.
      */
     public function request(string $endpoint, array $data = [])
