@@ -23,7 +23,24 @@ Rennokki\Larafy\LarafyServiceProvider::class,
 ```
 
 # Setting up the API
-For this, you will need an APP ID and an APP SECRET from your Spotify API Dashboard. Then, just create a new `Rennokki\Larafy\Larafy` class by passing the keys:
+For this, you will need an APP ID and an APP SECRET from your Spotify API Dashboard.
+
+
+For a cleaner approach, add the following to your `config/services.php` file:
+```php
+'spotify' => [
+    'client_id' => env('SPOTIFY_KEY'),
+    'client_secret' => env('SPOTIFY_SECRET'),
+    'redirect' => env('SPOTIFY_REDIRECT_URI')
+],
+```
+
+To use the API, you just pass no construct parameters to `Rennokki\Larafy\Larafy`:
+```php
+$api = new Larafy();
+```
+
+If you want to change the credentials on-demand, you can do so by declaring a new API instance with your App ID and your App Secret:
 ```php
 use Rennokki\Larafy\Larafy;
 

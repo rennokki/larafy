@@ -21,10 +21,10 @@ class Larafy
 
     const SPOTIFY_API_URL = 'https://api.spotify.com/v1';
 
-    public function __construct($clientId, $clientSecret)
+    public function __construct($clientId = null, $clientSecret = null)
     {
-        $this->clientId = $clientId;
-        $this->clientSecret = $clientSecret;
+        $this->clientId = ($clientId) ?: config('services.spotify.client_id');
+        $this->clientSecret = ($clientSecret) ?: config('services.spotify.client_secret');
 
         $this->generateClientCredentialsToken();
 
