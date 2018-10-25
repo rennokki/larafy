@@ -80,4 +80,15 @@ class LarafyGenerator
     {
         return 'https://open.spotify.com/artist/'.$artistId;
     }
+
+    /**
+     * Generate an URL for an user.
+     *
+     * @param string $userId
+     * @return string
+     */
+    public static function URLForUser($userId)
+    {
+        return 'https://open.spotify.com/user/'.$userId;
+    }
 }
