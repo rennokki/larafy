@@ -40,6 +40,7 @@ class Larafy
         $this->clientSecret = ($clientSecret) ?: config('services.spotify.client_secret');
 
         $this->setupClients();
+        $this->requestAppToken();
     }
 
 

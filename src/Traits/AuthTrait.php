@@ -5,6 +5,7 @@ namespace Rennokki\Larafy\Traits;
 use Rennokki\Larafy\Exceptions\SpotifyAPIException;
 use Rennokki\Larafy\Exceptions\SpotifyAuthorizationException;
 
+use GuzzleHttp\Exception\ClientException;
 use Carbon\Carbon;
 
 function encodeURIComponent($str) {
@@ -64,8 +65,9 @@ trait AuthTrait
             $request = $this->tokenClient->post('', [
                 'form_params' => $params,
             ]);
+        }
 
-        } catch (\GuzzleHttp\Exception\ClientException $e) {
+        catch (ClientException $e) {
             throw new SpotifyAPIException(
                 'Spotify API cannot generate the Client Credentials Token.', 
                 json_decode($e->getResponse()->getBody()->getContents())
@@ -93,6 +95,5 @@ trait AuthTrait
         $this->expireDate = null;
 
         $this->requestAppToken();
-
     }
 }
