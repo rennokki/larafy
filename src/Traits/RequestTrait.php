@@ -2,7 +2,7 @@
 
 namespace Rennokki\Larafy\Traits;
 
-use Rennokki\Larafy\Exceptions\SpotifyException;
+use Rennokki\Larafy\Exceptions\SpotifyResponseException;
 use GuzzleHttp\Exception\ClientException;
 
 trait RequestTrait
@@ -82,8 +82,8 @@ trait RequestTrait
         catch (ClientException $exception) {
             $response = $exception->getResponse()->getBody()->getContents();
             $response = json_decode($response);
-dd($response);
-            throw new SpotifyException("Failed to complete Spotify request: {$response->message}", $response->status);
+
+            throw new SpotifyResponseException("Failed to complete Spotify request: {$response->message}", $response->status);
         }
 
         return json_decode($request->getBody());

@@ -17,7 +17,7 @@ trait AuthTrait
     protected $refreshToken;
     protected $expireDate;
 
-    public function setAccessToken($accessToken, $refreshToken = null) 
+    public function reconfig($accessToken, $refreshToken = null) 
     {
         $this->accessToken = $accessToken;
 
@@ -31,7 +31,7 @@ trait AuthTrait
         $scopes = encodeURIComponent(join(' ', $scopes));
         $redirectUrl = encodeURIComponent($redirectUrl);
 
-        return self::AUTHORIZATION_URL . "?response_type=code&show_dialog=true&client_id={$this->clientId}" . "&scope={$scopes}" . "&redirect_uri={$redirectUrl}";
+        return self::AUTHORIZATION_URL . "?response_type=code&client_id={$this->clientId}" . "&scope={$scopes}" . "&redirect_uri={$redirectUrl}";
     }
 
     public function requestAppToken() 
