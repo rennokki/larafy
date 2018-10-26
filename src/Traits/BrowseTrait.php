@@ -13,7 +13,7 @@ trait BrowseTrait
      */
     public function getGenreSeeds()
     {
-        $json = $this->get()->request('/recommendations/available-genre-seeds');
+        $json = $this->get('recommendations/available-genre-seeds');
 
         return $json->genres;
     }
@@ -27,7 +27,7 @@ trait BrowseTrait
      */
     public function getBrowseCategories(int $limit = 10, int $offset = 0)
     {
-        $json = $this->get()->request('/browse/categories', [
+        $json = $this->get('browse/categories', [
             'country' => $this->market,
             'locale' => $this->locale,
             'limit' => $limit,
@@ -45,7 +45,7 @@ trait BrowseTrait
      */
     public function getBrowseCategory(string $categoryId)
     {
-        $json = $this->get()->request('/browse/categories/'.$categoryId, [
+        $json = $this->get('browse/categories/'.$categoryId, [
             'country' => $this->market,
             'locale' => $this->locale,
         ]);
@@ -63,7 +63,7 @@ trait BrowseTrait
      */
     public function getCategoryPlaylists(string $categoryId, int $limit = 10, int $offset = 0)
     {
-        $json = $this->get()->request('/browse/categories/'.$categoryId.'/playlists', [
+        $json = $this->get('browse/categories/'.$categoryId.'/playlists', [
             'country' => $this->market,
             'limit' => $limit,
             'offset' => $offset,
@@ -81,7 +81,7 @@ trait BrowseTrait
      */
     public function getNewReleases(int $limit = 10, int $offset = 0)
     {
-        $json = $this->get()->request('/browse/new-releases', [
+        $json = $this->get('browse/new-releases', [
             'country' => $this->market,
             'limit' => $limit,
             'offset' => $offset,
@@ -98,7 +98,7 @@ trait BrowseTrait
      */
     public function getRecommendations(LarafySeed $seed, int $limit = 10)
     {
-        $json = $this->get()->request('/recommendations', array_merge([
+        $json = $this->get('recommendations', array_merge([
             'limit' => $limit,
             'market' => $this->market,
         ], $seed->getArrayForAPI()));

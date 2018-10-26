@@ -2,9 +2,7 @@
 
 namespace Rennokki\Larafy\Traits;
 
-use Rennokki\Larafy\Exceptions\SpotifyAPIException;
-use Rennokki\Larafy\Exceptions\SpotifyAuthorizationException;
-
+use Rennokki\Larafy\Exceptions\SpotifyTokenException;
 use GuzzleHttp\Exception\ClientException;
 use Carbon\Carbon;
 
@@ -13,22 +11,19 @@ function encodeURIComponent($str) {
     return strtr(rawurlencode($str), $revert);
 }
 
-
 trait AuthTrait
 {
     protected $accessToken;
     protected $refreshToken;
     protected $expireDate;
 
-
     public function getAuthorizationURL($scopes = [], $redirectUrl)
     {
         $scopes = encodeURIComponent(join(' ', $scopes));
         $redirectUrl = encodeURIComponent($redirectUrl);
 
-        return self::AUTHORIZATION_URL . "?response_type=code&client_id={$this->clientId}" . "&scope={$scopes}" . "&redirect_uri={$redirectUrl}";
+        return self::AUTHORIZATION_URL . "?response_type=code&show_dialog=true&client_id={$this->clientId}" . "&scope={$scopes}" . "&redirect_uri={$redirectUrl}";
     }
-
 
     public function requestAppToken() 
     {
@@ -36,7 +31,6 @@ trait AuthTrait
             'grant_type' => 'client_credentials',
         ]);
     }
-
 
     public function requestUserToken($authCode, $redirectUrl) 
     {
@@ -47,8 +41,8 @@ trait AuthTrait
         ]);
     }
 
-
-    public function refreshToken() {
+    public function refreshToken() 
+    {
         if (!$this->refreshToken) {
             return $this->requestAppToken();
         }
@@ -59,8 +53,8 @@ trait AuthTrait
         ]);
     }
 
-
-    private function requestToken($params) {
+    private function requestToken($params) 
+    {
         try {
             $request = $this->tokenClient->post('', [
                 'form_params' => $params,
@@ -68,10 +62,10 @@ trait AuthTrait
         }
 
         catch (ClientException $e) {
-            throw new SpotifyAPIException(
-                'Spotify API cannot generate the Client Credentials Token.', 
-                json_decode($e->getResponse()->getBody()->getContents())
-            );
+            $response = $e->getResponse()->getBody()->getContents();
+            $response = json_decode($response);
+
+            throw new SpotifyTokenException("Failed to request Spotify token: {$response->error_description}", $response->error);
         }
 
         $response = json_decode($request->getBody());
@@ -86,7 +80,6 @@ trait AuthTrait
 
         return $response;
     }
-
 
     public function forget() 
     {

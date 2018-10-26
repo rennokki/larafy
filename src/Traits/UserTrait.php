@@ -2,9 +2,6 @@
 
 namespace Rennokki\Larafy\Traits;
 
-use Rennokki\Larafy\Exceptions\SpotifyAPIException;
-use Rennokki\Larafy\Exceptions\SpotifyAuthorizationException;
-
 use Carbon\Carbon;
 
 trait UserTrait
@@ -13,7 +10,6 @@ trait UserTrait
     {
         return $this->get('me');
     }
-
 
     public function getFollowedArtists(int $limit = 20, string $after = NULL) 
     {
@@ -29,7 +25,6 @@ trait UserTrait
         return $this->get('me/following', $options);
     }
 
-
     public function getTopTracks(int $limit = 20, int $offset = 0, string $timeRange = 'medium_term') 
     {
         return $this->get('me/top/tracks', [
@@ -38,7 +33,6 @@ trait UserTrait
             'time_range' => $timeRange,
         ]);
     }
-
 
     public function getTopArtists(int $limit = 20, int $offset = 0, string $timeRange = 'medium_term') 
     {

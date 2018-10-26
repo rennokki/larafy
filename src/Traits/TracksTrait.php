@@ -16,7 +16,7 @@ trait TracksTrait
             $tracksIds = collect($tracksIds)->implode(',');
         }
 
-        $json = $this->get()->request('/tracks', [
+        $json = $this->get('tracks', [
             'ids' => $tracksIds,
         ]);
 
@@ -31,7 +31,7 @@ trait TracksTrait
      */
     public function getTrack(string $trackId)
     {
-        $json = $this->get()->request('/tracks/'.$trackId, [
+        $json = $this->get('tracks/'.$trackId, [
             'market' => $this->market,
         ]);
 
@@ -48,7 +48,7 @@ trait TracksTrait
      */
     public function searchTracks(string $query, int $limit = 10, int $offset = 0)
     {
-        $json = $this->get()->request('/search', [
+        $json = $this->get('search', [
             'q' => $query,
             'type' => 'track',
             'market' => $this->market,

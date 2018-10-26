@@ -16,7 +16,7 @@ trait ArtistsTrait
             $artistsIds = collect($artistsIds)->implode(',');
         }
 
-        $json = $this->get()->request('/artists', [
+        $json = $this->get('artists', [
             'ids' => $artistsIds,
         ]);
 
@@ -31,7 +31,7 @@ trait ArtistsTrait
      */
     public function getArtist(string $artistId)
     {
-        $json = $this->get()->request('/artists/'.$artistId);
+        $json = $this->get('artists/'.$artistId);
 
         return $json;
     }
@@ -51,7 +51,7 @@ trait ArtistsTrait
             $includeGroups = collect($includeGroups)->implode(',');
         }
 
-        return $this->get()->request('/artists/'.$artistId.'/albums', [
+        return $this->get('artists/'.$artistId.'/albums', [
             'include_groups' => $includeGroups,
             'market' => $this->market,
             'limit' => $limit,
@@ -67,7 +67,7 @@ trait ArtistsTrait
      */
     public function getArtistTopTracks(string $artistId)
     {
-        return $this->get()->request('/artists/'.$artistId.'/top-tracks', [
+        return $this->get('artists/'.$artistId.'/top-tracks', [
             'country' => $this->market,
         ]);
     }
@@ -80,7 +80,7 @@ trait ArtistsTrait
      */
     public function getArtistRelatedArtists(string $artistId)
     {
-        return $this->get()->request('/artists/'.$artistId.'/related-artists');
+        return $this->get('artists/'.$artistId.'/related-artists');
     }
 
     /**
@@ -93,7 +93,7 @@ trait ArtistsTrait
      */
     public function searchArtists(string $query, int $limit = 10, int $offset = 0)
     {
-        $json = $this->get()->request('/search', [
+        $json = $this->get('search', [
             'q' => $query,
             'type' => 'artist',
             'market' => $this->market,

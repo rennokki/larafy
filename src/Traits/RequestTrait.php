@@ -2,8 +2,7 @@
 
 namespace Rennokki\Larafy\Traits;
 
-use Rennokki\Larafy\Exceptions\SpotifyAPIException;
-use Rennokki\Larafy\Exceptions\SpotifyAuthorizationException;
+use Rennokki\Larafy\Exceptions\SpotifyException;
 use GuzzleHttp\Exception\ClientException;
 
 trait RequestTrait
@@ -69,7 +68,7 @@ trait RequestTrait
     public function request(string $method, string $endpoint, array $options = [])
     {
         if ($this->expireDate && $this->expireDate->isPast()) {
-            // $this->refreshToken();
+            $this->refreshToken();
         }
 
         try {
@@ -80,13 +79,11 @@ trait RequestTrait
             ]));
         }
 
-        catch (ClientException $e) {
-            dd($e->getRequest(), $e->getResponse());
+        catch (ClientException $exception) {
+            $response = $exception->getResponse()->getBody()->getContents();
+            $response = json_decode($response);
 
-            throw new SpotifyAPIException(
-                'Spotify returned other than 200 OK.', 
-                json_decode($e->getResponse()->getBody()->getContents())
-            );
+            throw new SpotifyException("Failed to complete Spotify request: {$response->error_description}", $response->error);
         }
 
         return json_decode($request->getBody());

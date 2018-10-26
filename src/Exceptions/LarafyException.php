@@ -4,17 +4,17 @@ namespace Rennokki\Larafy\Exceptions;
 
 class LarafyException extends \Exception
 {
-    protected $apiResponse;
+    protected $errorCode;
 
-    public function __construct($message = null, $apiResponse = null, $code = 0, \EXception $previous = null)
+    public function __construct(string $message, string $errorCode = null)
     {
-        parent::__construct($message, $code, $previous);
+        parent::__construct($message);
 
-        $this->apiResponse = $apiResponse;
+        $this->errorCode = $errorCode;
     }
 
-    public function getAPIResponse()
+    public function getErrorCode()
     {
-        return $this->apiResponse;
+        return $this->errorCode;
     }
 }

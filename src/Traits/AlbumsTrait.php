@@ -16,7 +16,7 @@ trait AlbumsTrait
             $albumsIds = collect($albumsIds)->implode(',');
         }
 
-        $json = $this->get()->request('/albums', [
+        $json = $this->get('albums', [
             'ids' => $albumsIds,
             'market' => $this->market,
         ]);
@@ -32,7 +32,7 @@ trait AlbumsTrait
      */
     public function getAlbum(string $albumId)
     {
-        $json = $this->get()->request('/albums/'.$albumId, [
+        $json = $this->get('albums/'.$albumId, [
             'market' => $this->market,
         ]);
 
@@ -49,7 +49,7 @@ trait AlbumsTrait
      */
     public function getAlbumTracks(string $albumId, int $limit = 10, int $offset = 0)
     {
-        $json = $this->get()->request('/albums/'.$albumId.'/tracks', [
+        $json = $this->get('albums/'.$albumId.'/tracks', [
             'market' => $this->market,
             'limit' => $limit,
             'offset' => $offset,
@@ -68,7 +68,7 @@ trait AlbumsTrait
      */
     public function searchAlbums(string $query, int $limit = 10, int $offset = 0)
     {
-        $json = $this->get()->request('/search', [
+        $json = $this->get('search', [
             'q' => $query,
             'type' => 'album',
             'market' => $this->market,
