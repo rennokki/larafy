@@ -17,6 +17,15 @@ trait AuthTrait
     protected $refreshToken;
     protected $expireDate;
 
+    public function setAccessToken($accessToken, $refreshToken = null) 
+    {
+        $this->accessToken = $accessToken;
+
+        if ($refreshToken) {
+            $this->refreshToken = $refreshToken;
+        }
+    }
+
     public function getAuthorizationURL($scopes = [], $redirectUrl)
     {
         $scopes = encodeURIComponent(join(' ', $scopes));
@@ -79,14 +88,5 @@ trait AuthTrait
         }
 
         return $response;
-    }
-
-    public function forget() 
-    {
-        $this->accessToken = null;
-        $this->refreshToken = null;
-        $this->expireDate = null;
-
-        $this->requestAppToken();
     }
 }
