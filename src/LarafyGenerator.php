@@ -91,4 +91,30 @@ class LarafyGenerator
     {
         return 'https://open.spotify.com/user/'.$userId;
     }
+
+    public static function IdFromURI($uri) 
+    {
+        $matches = [];
+        if (!preg_match('/spotify:(album|artist|track):([a-zA-Z0-9]+)$/', $uri, $matches)) {
+            return false;
+        }
+
+        return [
+            'type' => $matches[1],
+            'id' => $matches[2],
+        ];
+    }
+
+    public static function IdFromURL($url)
+    {
+        $matches = [];
+        if (!preg_match('/https:\/\/open.spotify.com\/(album|artist|track)\/([a-zA-Z0-9]+)$/', strtok($url, '?'), $matches)) {
+            return false;
+        }
+
+        return [
+            'type' => $matches[1],
+            'id' => $matches[2],
+        ];
+    }
 }

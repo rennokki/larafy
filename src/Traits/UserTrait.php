@@ -11,7 +11,7 @@ trait UserTrait
         return $this->get('me');
     }
 
-    public function getFollowedArtists(int $limit = 20, string $after = NULL) 
+    public function getFollowedArtists(int $limit = 10, string $after = NULL) 
     {
         $options = [
             'type' => 'artist',
@@ -25,7 +25,7 @@ trait UserTrait
         return $this->get('me/following', $options);
     }
 
-    public function getTopTracks(int $limit = 20, int $offset = 0, string $timeRange = 'medium_term') 
+    public function getTopTracks(int $limit = 10, int $offset = 0, string $timeRange = 'medium_term') 
     {
         return $this->get('me/top/tracks', [
             'limit' => $limit,
@@ -34,7 +34,7 @@ trait UserTrait
         ]);
     }
 
-    public function getTopArtists(int $limit = 20, int $offset = 0, string $timeRange = 'medium_term') 
+    public function getTopArtists(int $limit = 10, int $offset = 0, string $timeRange = 'medium_term') 
     {
         return $this->get('me/top/artists', [
             'limit' => $limit,
