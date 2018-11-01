@@ -14,12 +14,13 @@ trait PlaylistsTrait
      */
     public function getPlaylist(string $playlistId)
     {
-        $json = $this->get()->request('/playlists/'.$playlistId, [
+        $json = $this->get()->request('/playlists/' . $playlistId, [
             'market' => $this->market,
         ]);
 
         return $json;
     }
+
 
     /**
      * Get tracks from a playlist.
@@ -31,7 +32,7 @@ trait PlaylistsTrait
      */
     public function getPlaylistTracks(string $playlistId, int $limit = 10, int $offset = 0)
     {
-        $json = $this->get()->request('/playlists/'.$playlistId.'/tracks', [
+        $json = $this->get()->request('/playlists/' . $playlistId . '/tracks', [
             'market' => $this->market,
             'limit' => $limit,
             'offset' => $offset,
@@ -39,6 +40,7 @@ trait PlaylistsTrait
 
         return $json;
     }
+
 
     /**
      * Get featured playlists from a specific time.
@@ -62,6 +64,7 @@ trait PlaylistsTrait
 
         return $json->playlists;
     }
+
 
     /**
      * Search playlists based on a query.

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/doctrine/inflector" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/doctrine/instantiator" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/doctrine/lexer" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/fzaninotto/faker" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/guzzlehttp/promises" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/guzzlehttp/psr7" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/laravel/framework" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/league/flysystem" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/monolog/monolog" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/myclabs/deep-copy" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/orchestra/database" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/orchestra/testbench" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/orchestra/testbench-core" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/phar-io/manifest" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/phpspec/prophecy" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/phpunit/php-timer" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/phpunit/php-token-stream" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/phpunit/phpunit" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/psr/container" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/psr/http-message" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/psr/log" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/psr/simple-cache" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/ramsey/uuid" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/sebastian/comparator" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/sebastian/diff" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/sebastian/environment" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/sebastian/exporter" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/sebastian/global-state" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/sebastian/object-enumerator" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/sebastian/object-reflector" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/sebastian/recursion-context" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/sebastian/resource-operations" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/symfony/console" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/symfony/contracts" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/symfony/css-selector" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/symfony/debug" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/symfony/event-dispatcher" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/symfony/finder" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/symfony/http-foundation" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/symfony/http-kernel" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/symfony/polyfill-php72" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/symfony/process" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/symfony/routing" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/symfony/translation" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/symfony/var-dumper" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/vlucas/phpdotenv" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/webmozart/assert" vcs="Git" />
+  </component>
+</project>

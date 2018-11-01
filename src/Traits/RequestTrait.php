@@ -2,8 +2,8 @@
 
 namespace Rennokki\Larafy\Traits;
 
-use Rennokki\Larafy\Exceptions\SpotifyResponseException;
 use GuzzleHttp\Exception\ClientException;
+use Rennokki\Larafy\Exceptions\SpotifyResponseException;
 
 trait RequestTrait
 {
@@ -19,6 +19,7 @@ trait RequestTrait
         ]);
     }
 
+
     /**
      * Set the request method to POST.
      *
@@ -31,6 +32,7 @@ trait RequestTrait
             'body' => $body,
         ]);
     }
+
 
     /**
      * Set the request method to PUT.
@@ -45,6 +47,7 @@ trait RequestTrait
         ]);
     }
 
+
     /**
      * Set the request method to DELETE.
      *
@@ -57,6 +60,7 @@ trait RequestTrait
             'body' => $body,
         ]);
     }
+
 
     /**
      * Launch a request to the API.
@@ -74,12 +78,10 @@ trait RequestTrait
         try {
             $request = $this->apiClient->request($method, $endpoint, array_merge($options, [
                 'headers' => [
-                    'Authorization' => 'Bearer '.$this->accessToken,
+                    'Authorization' => 'Bearer ' . $this->accessToken,
                 ],
             ]));
-        }
-
-        catch (ClientException $exception) {
+        } catch (ClientException $exception) {
             $response = $exception->getResponse()->getBody()->getContents();
             $response = json_decode($response);
 

@@ -24,6 +24,7 @@ trait AlbumsTrait
         return $json->albums;
     }
 
+
     /**
      * Get an album based on ID.
      *
@@ -32,12 +33,13 @@ trait AlbumsTrait
      */
     public function getAlbum(string $albumId)
     {
-        $json = $this->get('albums/'.$albumId, [
+        $json = $this->get('albums/' . $albumId, [
             'market' => $this->market,
         ]);
 
         return $json;
     }
+
 
     /**
      * Get tracks from an album.
@@ -49,7 +51,7 @@ trait AlbumsTrait
      */
     public function getAlbumTracks(string $albumId, int $limit = 10, int $offset = 0)
     {
-        $json = $this->get('albums/'.$albumId.'/tracks', [
+        $json = $this->get('albums/' . $albumId . '/tracks', [
             'market' => $this->market,
             'limit' => $limit,
             'offset' => $offset,
@@ -57,6 +59,7 @@ trait AlbumsTrait
 
         return $json;
     }
+
 
     /**
      * Search albums based on a query.

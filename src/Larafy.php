@@ -2,17 +2,15 @@
 
 namespace Rennokki\Larafy;
 
+use GuzzleHttp\Client;
 use Rennokki\Larafy\Traits\AlbumsTrait;
+use Rennokki\Larafy\Traits\ArtistsTrait;
 use Rennokki\Larafy\Traits\AuthTrait;
 use Rennokki\Larafy\Traits\BrowseTrait;
-use Rennokki\Larafy\Traits\TracksTrait;
-use Rennokki\Larafy\Traits\ArtistsTrait;
-use Rennokki\Larafy\Traits\RequestTrait;
 use Rennokki\Larafy\Traits\PlaylistsTrait;
+use Rennokki\Larafy\Traits\RequestTrait;
+use Rennokki\Larafy\Traits\TracksTrait;
 use Rennokki\Larafy\Traits\UserTrait;
-
-use Carbon\Carbon;
-use GuzzleHttp\Client;
 
 class Larafy
 {
@@ -43,14 +41,14 @@ class Larafy
     }
 
 
-    private function setupClients() 
+    private function setupClients()
     {
         $this->tokenClient = new Client([
             'base_uri' => self::SPOTIFY_TOKEN_URL,
             'headers' => [
                 'Content-Type' => 'application/x-www-form-urlencoded',
                 'Accepts' => 'application/json',
-                'Authorization' => 'Basic '.base64_encode($this->clientId.':'.$this->clientSecret),
+                'Authorization' => 'Basic ' . base64_encode($this->clientId . ':' . $this->clientSecret),
             ],
         ]);
 

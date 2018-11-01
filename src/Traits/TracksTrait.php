@@ -23,6 +23,7 @@ trait TracksTrait
         return $json->tracks;
     }
 
+
     /**
      * Get a track based on ID.
      *
@@ -31,12 +32,13 @@ trait TracksTrait
      */
     public function getTrack(string $trackId)
     {
-        $json = $this->get('tracks/'.$trackId, [
+        $json = $this->get('tracks/' . $trackId, [
             'market' => $this->market,
         ]);
 
         return $json;
     }
+
 
     /**
      * Search tracks based on a query.

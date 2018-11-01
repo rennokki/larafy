@@ -18,6 +18,7 @@ trait BrowseTrait
         return $json->genres;
     }
 
+
     /**
      * Get categories from the Browse section.
      *
@@ -37,6 +38,7 @@ trait BrowseTrait
         return $json->categories;
     }
 
+
     /**
      * Get category details from Browse.
      *
@@ -45,13 +47,14 @@ trait BrowseTrait
      */
     public function getBrowseCategory(string $categoryId)
     {
-        $json = $this->get('browse/categories/'.$categoryId, [
+        $json = $this->get('browse/categories/' . $categoryId, [
             'country' => $this->market,
             'locale' => $this->locale,
         ]);
 
         return $json;
     }
+
 
     /**
      * Get playlists from a specific Browse category.
@@ -63,7 +66,7 @@ trait BrowseTrait
      */
     public function getCategoryPlaylists(string $categoryId, int $limit = 10, int $offset = 0)
     {
-        $json = $this->get('browse/categories/'.$categoryId.'/playlists', [
+        $json = $this->get('browse/categories/' . $categoryId . '/playlists', [
             'country' => $this->market,
             'limit' => $limit,
             'offset' => $offset,
@@ -71,6 +74,7 @@ trait BrowseTrait
 
         return $json->playlists;
     }
+
 
     /**
      * Get new albums releases.
@@ -89,6 +93,7 @@ trait BrowseTrait
 
         return $json->albums;
     }
+
 
     /**
      * Get track recommendations based on seeds.

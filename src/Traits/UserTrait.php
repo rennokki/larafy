@@ -2,16 +2,28 @@
 
 namespace Rennokki\Larafy\Traits;
 
-use Carbon\Carbon;
-
 trait UserTrait
 {
-    public function getCurrentUserProfile() 
+    /**
+     * Get detailed profile information about the current user.
+     *
+     * @param string $playlistId
+     * @return string The JSON response.
+     */
+    public function getCurrentUserProfile()
     {
         return $this->get('me');
     }
 
-    public function getFollowedArtists(int $limit = 10, string $after = NULL) 
+
+    /**
+     * Return the followed artists
+     *
+     * @param int $limit
+     * @param string|NULL $after
+     * @return string The JSON response
+     */
+    public function getFollowedArtists(int $limit = 10, string $after = NULL)
     {
         $options = [
             'type' => 'artist',
@@ -25,7 +37,16 @@ trait UserTrait
         return $this->get('me/following', $options);
     }
 
-    public function getTopTracks(int $limit = 10, int $offset = 0, string $timeRange = 'medium_term') 
+
+    /**
+     * Get the current user’s top tracks based on calculated affinity.
+     *
+     * @param int $limit
+     * @param int $offset
+     * @param string $timeRange
+     * @return mixed
+     */
+    public function getTopTracks(int $limit = 10, int $offset = 0, string $timeRange = 'medium_term')
     {
         return $this->get('me/top/tracks', [
             'limit' => $limit,
@@ -34,7 +55,16 @@ trait UserTrait
         ]);
     }
 
-    public function getTopArtists(int $limit = 10, int $offset = 0, string $timeRange = 'medium_term') 
+
+    /**
+     * Get the current user’s top artists based on calculated affinity.
+     *
+     * @param int $limit
+     * @param int $offset
+     * @param string $timeRange
+     * @return mixed
+     */
+    public function getTopArtists(int $limit = 10, int $offset = 0, string $timeRange = 'medium_term')
     {
         return $this->get('me/top/artists', [
             'limit' => $limit,

@@ -12,8 +12,9 @@ class LarafyGenerator
      */
     public static function URIForAlbum($albumId)
     {
-        return 'spotify:album:'.$albumId;
+        return 'spotify:album:' . $albumId;
     }
+
 
     /**
      * Generate an URI format for track.
@@ -23,8 +24,9 @@ class LarafyGenerator
      */
     public static function URIForTrack($trackId)
     {
-        return 'spotify:track:'.$trackId;
+        return 'spotify:track:' . $trackId;
     }
+
 
     /**
      * Generate an URI format for artist.
@@ -34,8 +36,9 @@ class LarafyGenerator
      */
     public static function URIForArtist($artistId)
     {
-        return 'spotify:artist:'.$artistId;
+        return 'spotify:artist:' . $artistId;
     }
+
 
     /**
      * Generate an URL for an album.
@@ -45,8 +48,9 @@ class LarafyGenerator
      */
     public static function URLForAlbum($albumId)
     {
-        return 'https://open.spotify.com/album/'.$albumId;
+        return 'https://open.spotify.com/album/' . $albumId;
     }
+
 
     /**
      * Generate an URL for a playlist.
@@ -56,8 +60,9 @@ class LarafyGenerator
      */
     public static function URLForPlaylist($playlistId)
     {
-        return 'https://open.spotify.com/playlist/'.$playlistId;
+        return 'https://open.spotify.com/playlist/' . $playlistId;
     }
+
 
     /**
      * Generate an URL for a track.
@@ -67,8 +72,9 @@ class LarafyGenerator
      */
     public static function URLForTrack($trackId)
     {
-        return 'https://open.spotify.com/track/'.$trackId;
+        return 'https://open.spotify.com/track/' . $trackId;
     }
+
 
     /**
      * Generate an URL for an artist.
@@ -78,8 +84,9 @@ class LarafyGenerator
      */
     public static function URLForArtist($artistId)
     {
-        return 'https://open.spotify.com/artist/'.$artistId;
+        return 'https://open.spotify.com/artist/' . $artistId;
     }
+
 
     /**
      * Generate an URL for an user.
@@ -89,10 +96,11 @@ class LarafyGenerator
      */
     public static function URLForUser($userId)
     {
-        return 'https://open.spotify.com/user/'.$userId;
+        return 'https://open.spotify.com/user/' . $userId;
     }
 
-    public static function parseSpotifyURI($uri) 
+
+    public static function parseSpotifyURI($uri)
     {
         $matches = [];
         if (!preg_match('/spotify:(album|artist|track):([a-zA-Z0-9]+)$/', $uri, $matches)) {
@@ -104,6 +112,7 @@ class LarafyGenerator
             'id' => $matches[2],
         ];
     }
+
 
     public static function parseSpotifyURL($url)
     {

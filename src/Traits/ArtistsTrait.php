@@ -23,6 +23,7 @@ trait ArtistsTrait
         return $json->artists;
     }
 
+
     /**
      * Get an artist based on ID.
      *
@@ -31,10 +32,11 @@ trait ArtistsTrait
      */
     public function getArtist(string $artistId)
     {
-        $json = $this->get('artists/'.$artistId);
+        $json = $this->get('artists/' . $artistId);
 
         return $json;
     }
+
 
     /**
      * Get an artist's albums.
@@ -51,13 +53,14 @@ trait ArtistsTrait
             $includeGroups = collect($includeGroups)->implode(',');
         }
 
-        return $this->get('artists/'.$artistId.'/albums', [
+        return $this->get('artists/' . $artistId . '/albums', [
             'include_groups' => $includeGroups,
             'market' => $this->market,
             'limit' => $limit,
             'offset' => $offset,
         ]);
     }
+
 
     /**
      * Get an artist's top tracks.
@@ -67,10 +70,11 @@ trait ArtistsTrait
      */
     public function getArtistTopTracks(string $artistId)
     {
-        return $this->get('artists/'.$artistId.'/top-tracks', [
+        return $this->get('artists/' . $artistId . '/top-tracks', [
             'country' => $this->market,
         ]);
     }
+
 
     /**
      * Get related artists from an artist.
@@ -80,8 +84,9 @@ trait ArtistsTrait
      */
     public function getArtistRelatedArtists(string $artistId)
     {
-        return $this->get('artists/'.$artistId.'/related-artists');
+        return $this->get('artists/' . $artistId . '/related-artists');
     }
+
 
     /**
      * Search artists based on a query.

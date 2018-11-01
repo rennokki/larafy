@@ -7,48 +7,35 @@ class LarafySeed
     public $artists = [];
     public $tracks = [];
     public $genres = [];
-
     public $acousticnessRange = [];
     public $targetAcousticness;
-
     public $danceabilityRange = [];
     public $targetDanceability;
-
     public $energyRange = [];
     public $targetEnergy;
-
     public $instrumentalnessRange = [];
     public $targetInstrumentalness;
-
     public $keyRange = [];
     public $targetKey;
-
     public $livenessRange = [];
     public $targetLiveness;
-
     public $loudnessRange = [];
     public $targetLoudness;
-
     public $modeRange = [];
     public $targetMode;
-
     public $popularityRange = [];
     public $targetPopularity;
-
     public $speechinessRange = [];
     public $targetSpeechiness;
-
     public $tempoRange = [];
     public $targetTempo;
-
     public $timeSignatureRange = [];
     public $targetTimeSignature;
-
     public $valenceRange = [];
     public $targetValence;
-
     public $durationRange = [];
     public $targetDuration;
+
 
     public function __construct()
     {
@@ -59,6 +46,7 @@ class LarafySeed
         $a = collect([1, 2, 3, 4]);
     }
 
+
     /**
      * Add an artist to the artists seeds.
      *
@@ -67,12 +55,13 @@ class LarafySeed
      */
     public function addArtist(string $artistId)
     {
-        if (! $this->artists->contains($artistId)) {
+        if (!$this->artists->contains($artistId)) {
             $this->artists->push($artistId);
         }
 
         return $this;
     }
+
 
     /**
      * Add artists to the artists seeds.
@@ -97,6 +86,7 @@ class LarafySeed
         return $this;
     }
 
+
     /**
      * Set artists as seed.
      *
@@ -116,6 +106,7 @@ class LarafySeed
         return $this;
     }
 
+
     /**
      * Add track to the tracks seeds.
      *
@@ -124,12 +115,13 @@ class LarafySeed
      */
     public function addTrack(string $trackId)
     {
-        if (! $this->tracks->contains($trackId)) {
+        if (!$this->tracks->contains($trackId)) {
             $this->tracks->push($trackId)->toArray();
         }
 
         return $this;
     }
+
 
     /**
      * Add tracks to the tracks seeds.
@@ -154,6 +146,7 @@ class LarafySeed
         return $this;
     }
 
+
     /**
      * Set tracks as seed.
      *
@@ -173,6 +166,7 @@ class LarafySeed
         return $this;
     }
 
+
     /**
      * Add genre to the genres seeds.
      *
@@ -180,12 +174,13 @@ class LarafySeed
      */
     public function addGenre(string $genreId)
     {
-        if (! $this->genres->contains($genreId)) {
+        if (!$this->genres->contains($genreId)) {
             $this->genres->push($genreId);
         }
 
         return $this;
     }
+
 
     /**
      * Add genres to the genres seeds.
@@ -210,6 +205,7 @@ class LarafySeed
         return $this;
     }
 
+
     /**
      * Set genres as seed.
      *
@@ -229,6 +225,7 @@ class LarafySeed
         return $this;
     }
 
+
     /**
      * Set acousticness range.
      *
@@ -243,6 +240,7 @@ class LarafySeed
         return $this;
     }
 
+
     /**
      * Set target acousticness.
      *
@@ -255,6 +253,7 @@ class LarafySeed
 
         return $this;
     }
+
 
     /**
      * Set danceability range.
@@ -270,6 +269,7 @@ class LarafySeed
         return $this;
     }
 
+
     /**
      * Set target danceability.
      *
@@ -282,6 +282,7 @@ class LarafySeed
 
         return $this;
     }
+
 
     /**
      * Set energy range.
@@ -297,6 +298,7 @@ class LarafySeed
         return $this;
     }
 
+
     /**
      * Set target energy.
      *
@@ -309,6 +311,7 @@ class LarafySeed
 
         return $this;
     }
+
 
     /**
      * Set instrumentalness range.
@@ -324,6 +327,7 @@ class LarafySeed
         return $this;
     }
 
+
     /**
      * Set target instrumentalness.
      *
@@ -336,6 +340,7 @@ class LarafySeed
 
         return $this;
     }
+
 
     /**
      * Set key range.
@@ -351,6 +356,7 @@ class LarafySeed
         return $this;
     }
 
+
     /**
      * Set target key.
      *
@@ -363,6 +369,7 @@ class LarafySeed
 
         return $this;
     }
+
 
     /**
      * Set liveness range.
@@ -378,6 +385,7 @@ class LarafySeed
         return $this;
     }
 
+
     /**
      * Set target liveness.
      *
@@ -390,6 +398,7 @@ class LarafySeed
 
         return $this;
     }
+
 
     /**
      * Set liveness range.
@@ -405,6 +414,7 @@ class LarafySeed
         return $this;
     }
 
+
     /**
      * Set target loudness.
      *
@@ -417,6 +427,7 @@ class LarafySeed
 
         return $this;
     }
+
 
     /**
      * Set mode range.
@@ -432,6 +443,7 @@ class LarafySeed
         return $this;
     }
 
+
     /**
      * Set target mode.
      *
@@ -444,6 +456,7 @@ class LarafySeed
 
         return $this;
     }
+
 
     /**
      * Set popularity range.
@@ -459,6 +472,7 @@ class LarafySeed
         return $this;
     }
 
+
     /**
      * Set target popularity.
      *
@@ -471,6 +485,7 @@ class LarafySeed
 
         return $this;
     }
+
 
     /**
      * Set speechiness range.
@@ -486,6 +501,7 @@ class LarafySeed
         return $this;
     }
 
+
     /**
      * Set target speechiness.
      *
@@ -498,6 +514,7 @@ class LarafySeed
 
         return $this;
     }
+
 
     /**
      * Set tempo range.
@@ -513,6 +530,7 @@ class LarafySeed
         return $this;
     }
 
+
     /**
      * Set target tempo.
      *
@@ -525,6 +543,7 @@ class LarafySeed
 
         return $this;
     }
+
 
     /**
      * Set time signature range.
@@ -540,6 +559,7 @@ class LarafySeed
         return $this;
     }
 
+
     /**
      * Set target time signature.
      *
@@ -552,6 +572,7 @@ class LarafySeed
 
         return $this;
     }
+
 
     /**
      * Set valence range.
@@ -567,6 +588,7 @@ class LarafySeed
         return $this;
     }
 
+
     /**
      * Set target valence.
      *
@@ -580,6 +602,7 @@ class LarafySeed
         return $this;
     }
 
+
     /**
      * Set duration range.
      *
@@ -589,10 +612,11 @@ class LarafySeed
      */
     public function setDuration(int $min, int $max)
     {
-        $this->durationRange = [(int) ($min * 1000), (int) ($max * 1000)];
+        $this->durationRange = [(int)($min * 1000), (int)($max * 1000)];
 
         return $this;
     }
+
 
     /**
      * Set target duration.
@@ -602,10 +626,11 @@ class LarafySeed
      */
     public function setTargetDuration(int $target)
     {
-        $this->targetDuration = (int) ($target * 1000);
+        $this->targetDuration = (int)($target * 1000);
 
         return $this;
     }
+
 
     /**
      * Get the array for API.
@@ -664,14 +689,14 @@ class LarafySeed
 
         foreach ($ranges as $field => $range) {
             if (count($range) > 0) {
-                $array->put('min_'.$field, $range[0]);
-                $array->put('max_'.$field, $range[1]);
+                $array->put('min_' . $field, $range[0]);
+                $array->put('max_' . $field, $range[1]);
             }
         }
 
         foreach ($targets as $field => $target) {
-            if (! is_null($target)) {
-                $array->put('target_'.$field, $target);
+            if (!is_null($target)) {
+                $array->put('target_' . $field, $target);
             }
         }
 
