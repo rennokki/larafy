@@ -57,6 +57,16 @@ class LarafyServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->publishes([
+            __DIR__.'/../config/larafy.php' => config_path('larafy.php'),
+        ]);
+
+        // Add Larafy client to service container
+        $this->app->singleton('Rennokki\Larafy\Larafy', function ($app) {
+            $key = config('larafy.consumer_key');
+            $secret = config('larafy.consumer_secret');
+
+            return new Larafy($key, $secret);
+        });
     }
 }

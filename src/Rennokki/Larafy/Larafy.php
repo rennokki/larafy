@@ -21,21 +21,19 @@ class Larafy
     private $tokenClient;
     private $apiClient;
 
-    protected $clientId;
-    protected $clientSecret;
+    private $clientId;
+    private $clientSecret;
 
-    public $market = 'US';
-    public $locale = 'en_US';
+    private $market;
+    private $locale;
 
-    const SPOTIFY_TOKEN_URL = 'https://accounts.spotify.com/api/token/';
-    const SPOTIFY_API_URL = 'https://api.spotify.com/v1/';
-    const AUTHORIZATION_URL = 'https://accounts.spotify.com/authorize';
-
-
-    public function __construct($clientId = null, $clientSecret = null)
+    public function __construct($clientId, $clientSecret)
     {
-        $this->clientId = ($clientId) ?: config('services.spotify.client_id');
-        $this->clientSecret = ($clientSecret) ?: config('services.spotify.client_secret');
+        $this->clientId = $clientId;
+        $this->clientSecret = $clientSecret;
+
+        $this->market = config('larafy.market');
+        $this->locale = config('larafy.locale');
 
         $this->setupClients();
     }
@@ -44,7 +42,7 @@ class Larafy
     private function setupClients()
     {
         $this->tokenClient = new Client([
-            'base_uri' => self::SPOTIFY_TOKEN_URL,
+            'base_uri' => config('larafy.request_token_url'),
             'headers' => [
                 'Content-Type' => 'application/x-www-form-urlencoded',
                 'Accepts' => 'application/json',
@@ -53,7 +51,7 @@ class Larafy
         ]);
 
         $this->apiClient = new Client([
-            'base_uri' => self::SPOTIFY_API_URL,
+            'base_uri' => config('larafy.api_url'),
             'headers' => [
                 'Content-Type' => 'application/x-www-form-urlencoded',
                 'Accepts' => 'application/json',
@@ -62,16 +60,26 @@ class Larafy
     }
 
 
+    public function setClientId(string $clientId)
+    {
+        $this->clientId = $clientId;
+    }
+
+
+    public function setSecret(string $clientSecret)
+    {
+        $this->clientSecret = $clientSecret;
+    }
+
+
     public function setMarket(string $market)
     {
         $this->market = $market;
-        return $this;
     }
 
 
     public function setLocale(string $locale)
     {
         $this->locale = $locale;
-        return $this;
     }
 }

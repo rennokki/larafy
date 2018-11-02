@@ -20,22 +20,6 @@ trait AuthTrait
 
 
     /**
-     * Reconfig Larafy by providing an accesstoken and optional refreshtoken
-     *
-     * @param $accessToken
-     * @param null $refreshToken
-     */
-    public function reconfig($accessToken, $refreshToken = null)
-    {
-        $this->accessToken = $accessToken;
-
-        if ($refreshToken) {
-            $this->refreshToken = $refreshToken;
-        }
-    }
-
-
-    /**
      * Request a general app token. This token can't be used to fetch user related information.
      *
      * @return mixed|string
@@ -61,7 +45,7 @@ trait AuthTrait
         $scopes = encodeURIComponent(join(' ', $scopes));
         $redirectUrl = encodeURIComponent($redirectUrl);
 
-        return self::AUTHORIZATION_URL . "?response_type=code&client_id={$this->clientId}" . "&scope={$scopes}" . "&redirect_uri={$redirectUrl}";
+        return config('larafy.authorization_url') . "?response_type=code&client_id={$this->clientId}&scope={$scopes}&redirect_uri={$redirectUrl}";
     }
 
 
@@ -120,5 +104,17 @@ trait AuthTrait
         }
 
         return $response;
+    }
+
+
+    public function setAccessToken($accessToken)
+    {
+        $this->accessToken = $accessToken;
+    }
+
+
+    public function setRefreshToken($refreshToken)
+    {
+        $this->refreshToken = $refreshToken;
     }
 }

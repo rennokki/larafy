@@ -35,12 +35,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Rennokki\\Larafy\\": "src"
+            "Rennokki\\Larafy": "src/Rennokki/Larafy"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Rennokki\\Larafy\\Test\\": "tests"
+            "Rennokki\\Larafy\\Test": "tests"
         }
     },
     "scripts": {
