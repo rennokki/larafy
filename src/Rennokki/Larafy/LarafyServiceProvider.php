@@ -14,39 +14,13 @@ class LarafyServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        /**
-         * Validator for Spotify URI's and Spotfy URL's
-         *
-         * @param object $info
-         * @param string $type
-         * @return bool
-         */
-        function validate($info, $type)
-        {
-            if (!$info) {
-                return false;
-            }
+        $this->publishes([
+            __DIR__.'/../config/larafy.php' => config_path('larafy.php'),
+        ]);
 
-            $validTypes = ['album', 'artist', 'track'];
-            if (in_array($type, $validTypes) && $info->type !== $type) {
-                return false;
-            }
-
-            return true;
-        }
-
-
-        // Spotify URI validation
-        Validator::extend('spotifyUri', function ($attribute, $value, $parameters, $validator) {
-            $parsedURI = LarafyGenerator::parseSpotifyURI($value);
-            return validate($parsedURI, $parameters[0]);
-        });
-
-        // Spotify URL validation
-        Validator::extend('spotifyUrl', function ($attribute, $value, $parameters, $validator) {
-            $parsedURL = LarafyGenerator::parseSpotifyURL($value);
-            return validate($parsedURL, $parameters[0]);
-        });
+        // Add Larafy validators
+        Validator::extend('spotifyUri', 'Rennokki\Larafy\Validators\LarafyValidator@validateUri');
+        Validator::extend('spotifyUrl', 'Rennokki\Larafy\Validators\LarafyValidator@validateUrl');
     }
 
 
@@ -57,10 +31,6 @@ class LarafyServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->publishes([
-            __DIR__.'/../config/larafy.php' => config_path('larafy.php'),
-        ]);
-
         // Add Larafy client to service container
         $this->app->singleton('Rennokki\Larafy\Larafy', function ($app) {
             $key = config('larafy.consumer_key');
