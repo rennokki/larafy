@@ -1,6 +1,6 @@
 <?php
 
-namespace Blokks\Validators;
+namespace Rennokki\Larafy\Validators;
 
 use Rennokki\Larafy\LarafyGenerator;
 
