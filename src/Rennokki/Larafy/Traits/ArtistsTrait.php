@@ -10,14 +10,11 @@ trait ArtistsTrait
      * @param string|array $artistsIds
      * @return string The JSON response.
      */
-    public function getArtists($artistsIds)
+    public function getArtists(array $artistIds)
     {
-        if (is_array($artistsIds)) {
-            $artistsIds = collect($artistsIds)->implode(',');
-        }
-
+        $artistIds = implode(',', $artistIds);
         $json = $this->get('artists', [
-            'ids' => $artistsIds,
+            'ids' => $artistIds,
         ]);
 
         return $json->artists;

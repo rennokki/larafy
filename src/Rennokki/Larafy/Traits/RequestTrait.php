@@ -85,7 +85,7 @@ trait RequestTrait
             $response = $exception->getResponse()->getBody()->getContents();
             $response = json_decode($response);
 
-            throw new SpotifyResponseException("Failed to complete Spotify request: {$response->message}", $response->status);
+            throw new SpotifyResponseException("Failed to complete Spotify request: {$response->error->message}", $response->error->status);
         }
 
         return json_decode($request->getBody());
