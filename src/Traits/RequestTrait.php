@@ -2,6 +2,7 @@
 
 namespace Rennokki\Larafy\Traits;
 
+use Carbon\Carbon;
 use Rennokki\Larafy\Exceptions\SpotifyAPIException;
 use Rennokki\Larafy\Exceptions\SpotifyAuthorizationException;
 
@@ -149,7 +150,7 @@ trait RequestTrait
         $response = json_decode($request->getBody());
 
         $this->clientCredentialsToken = $response->access_token;
-        $this->clientCredentialsExpirationDate = now()->addSeconds($response->expires_in);
+        $this->clientCredentialsExpirationDate = Carbon::now()->addSeconds($response->expires_in);
 
         return $this;
     }
