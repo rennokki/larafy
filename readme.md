@@ -8,6 +8,8 @@
 
 [![PayPal](https://img.shields.io/badge/PayPal-donate-blue.svg)](https://paypal.me/rennokki)
 
+# This package is no longer maintained!
+
 # Larafy
 Larafy is a PHP API Wrapper for Spotify API. This wrapper is more oriented over Client Credentials authenticated endpoints and provides great interface and and eloquent way to search for tracks, seed genres or simply just provide custom tracks/albums listings for your users.
 
